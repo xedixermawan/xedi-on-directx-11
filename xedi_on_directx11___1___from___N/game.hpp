@@ -102,7 +102,7 @@ public :
 
 		// ----- #step04 ----- set raster state
 		D3D11_RASTERIZER_DESC rasterizerState;
-		rasterizerState.CullMode = D3D11_CULL_BACK;  // D3D11_CULL_NONE;D3D11_CULL_FRONT; D3D11_CULL_BACK
+		rasterizerState.CullMode = D3D11_CULL_FRONT;  // D3D11_CULL_NONE;D3D11_CULL_FRONT; D3D11_CULL_BACK
 		rasterizerState.FillMode = D3D11_FILL_SOLID; // D3D11_FILL_SOLID ;//  D3D11_FILL_WIREFRAME;
 		rasterizerState.FrontCounterClockwise = FALSE;
 		rasterizerState.DepthBias = false;
@@ -122,37 +122,68 @@ public :
 	void PreparingDraw() {
 		// ----- #step05 ----- preparing vertex data & index to buffers
 		vertex_type cubeVertices[] = {
-			{XMFLOAT3(-0.5f, -0.5f, -0.5f), XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 0.0f)}, // 0
-			{XMFLOAT3(-0.5f, -0.5f,  0.5f), XMFLOAT3(0.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 0.0f)}, // 1
-			{XMFLOAT3(-0.5f,  0.5f, -0.5f), XMFLOAT3(0.0f, 1.0f, 0.0f), XMFLOAT2(0.0f, 1.0f)}, // 2
-			{XMFLOAT3(-0.5f,  0.5f,  0.5f), XMFLOAT3(0.0f, 1.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)}, // 3
+		    // Front Face
+			{XMFLOAT3(-1.0f, -1.0f, -1.0f),XMFLOAT3(0.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 1.0f)},
+			{XMFLOAT3(-1.0f,  1.0f, -1.0f),XMFLOAT3(0.0f, 0.0f, 1.0f), XMFLOAT2(0.0f, 0.0f)},
+			{XMFLOAT3( 1.0f,  1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(1.0f, 0.0f)},
+			{XMFLOAT3( 1.0f, -1.0f, -1.0f),XMFLOAT3(0.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)},
 
-			{XMFLOAT3( 0.5f, -0.5f, -0.5f), XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 0.0f)}, // 4
-			{XMFLOAT3( 0.5f, -0.5f,  0.5f), XMFLOAT3(1.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 0.0f)}, // 5
-			{XMFLOAT3( 0.5f,  0.5f, -0.5f), XMFLOAT3(1.0f, 1.0f, 0.0f), XMFLOAT2(0.0f, 1.0f)}, // 6
-			{XMFLOAT3( 0.5f,  0.5f,  0.5f), XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)}, // 7
+			// Back Face
+			{XMFLOAT3(-1.0f, -1.0f, 1.0f),XMFLOAT3(1.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)},
+			{XMFLOAT3( 1.0f, -1.0f, 1.0f),XMFLOAT3(0.0f, 1.0f, 1.0f), XMFLOAT2(0.0f, 1.0f)},
+			{XMFLOAT3( 1.0f,  1.0f, 1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 0.0f)},
+			{XMFLOAT3(-1.0f,  1.0f, 1.0f),XMFLOAT3(1.0f, 1.0f, 1.0f), XMFLOAT2(1.0f, 0.0f)},
+
+			// Top Face
+			{XMFLOAT3(-1.0f, 1.0f, -1.0f),XMFLOAT3(0.0f, 1.0f, 1.0f), XMFLOAT2( 0.0f, 1.0f)},
+			{XMFLOAT3(-1.0f, 1.0f,  1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 0.0f)},
+			{XMFLOAT3( 1.0f, 1.0f,  1.0f),XMFLOAT3(1.0f, 1.0f, 0.0f), XMFLOAT2(1.0f, 0.0f)},
+			{XMFLOAT3( 1.0f, 1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)},
+
+			// Bottom Face
+			{XMFLOAT3(-1.0f, -1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2( 1.0f, 1.0f)},
+			{XMFLOAT3( 1.0f, -1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 1.0f)},
+			{XMFLOAT3( 1.0f, -1.0f,  1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 0.0f)},
+			{XMFLOAT3(-1.0f, -1.0f,  1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(1.0f, 0.0f)},
+
+			// Left Face
+			{XMFLOAT3(-1.0f, -1.0f,  1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(0.0f, 1.0f)},
+			{XMFLOAT3(-1.0f,  1.0f,  1.0f),XMFLOAT3(0.0f, 1.0f, 1.0f), XMFLOAT2(0.0f, 0.0f)},
+			{XMFLOAT3(-1.0f,  1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(1.0f, 0.0f)},
+			{XMFLOAT3(-1.0f, -1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 0.0f), XMFLOAT2(1.0f, 1.0f)},
+
+			// Right Face
+			{XMFLOAT3( 1.0f, -1.0f, -1.0f),XMFLOAT3(1.0f, 0.0f, 1.0f), XMFLOAT2(0.0f, 1.0f)},
+			{XMFLOAT3( 1.0f,  1.0f, -1.0f),XMFLOAT3(0.0f, 1.0f, 1.0f), XMFLOAT2( 0.0f, 0.0f)},
+			{XMFLOAT3( 1.0f,  1.0f,  1.0f),XMFLOAT3(0.0f, 1.0f, 0.0f), XMFLOAT2(1.0f, 0.0f)},
+			{XMFLOAT3( 1.0f, -1.0f,  1.0f),XMFLOAT3(1.0f, 0.0f, 1.0f), XMFLOAT2(1.0f, 1.0f)},
 		};
 
 		unsigned short cubeIndices[] = {
-			0,2,1, // -x
-			1,2,3,
+			// Front Face
+			0,  1,  2,
+			0,  2,  3,
 
-			4,5,6, // +x
-			5,7,6,
+			// Back Face
+			4,  5,  6,
+			4,  6,  7,
 
-			0,1,5, // -y
-			0,5,4,
+			// Top Face
+			8,  9, 10,
+			8, 10, 11,
 
-			2,6,7, // +y
-			2,7,3,
+			// Bottom Face
+			12, 13, 14,
+			12, 14, 15,
 
-			0,4,6, // -z
-			0,6,2,
+			// Left Face
+			16, 17, 18,
+			16, 18, 19,
 
-			1,3,7, // +z
-			1,7,5,
+			// Right Face
+			20, 21, 22,
+			20, 22, 23
 		};
-
 		m_IndexCount = ARRAYSIZE(cubeIndices);
 
 		CD3D11_BUFFER_DESC verticesBufferDesc (sizeof(cubeVertices), D3D11_BIND_VERTEX_BUFFER);
@@ -259,7 +290,7 @@ public :
 		assert ( m_TextureShaderResView );
 	}
 	void Update(const double delta_time) {
-		XMVECTOR eye = XMVectorSet(0.0f, 0.0f, 1.5f, 0.0f);
+		XMVECTOR eye = XMVectorSet(0.0f, 0.0f, 3.5f, 0.0f);
 		XMVECTOR at  = XMVectorSet(0.0f, -0.1f, 0.0f, 0.0f);
 		XMVECTOR up  = XMVectorSet(0.0f, 0.1f, 0.0f, 0.0f);
 
