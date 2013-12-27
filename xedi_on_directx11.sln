@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xedi_on_directx11___0___fro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xedi_on_directx11___1___from___N", "xedi_on_directx11___1___from___N\xedi_on_directx11___1___from___N.vcxproj", "{375AF0FB-3C05-4F88-9287-27EC691458AC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "xedi_on_directx11___2___from___N", "xedi_on_directx11___2___from___N\xedi_on_directx11___2___from___N.vcxproj", "{71E8624B-CF22-43C8-A80B-3C937E99395E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{375AF0FB-3C05-4F88-9287-27EC691458AC}.Debug|Win32.Build.0 = Debug|Win32
 		{375AF0FB-3C05-4F88-9287-27EC691458AC}.Release|Win32.ActiveCfg = Release|Win32
 		{375AF0FB-3C05-4F88-9287-27EC691458AC}.Release|Win32.Build.0 = Release|Win32
+		{71E8624B-CF22-43C8-A80B-3C937E99395E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{71E8624B-CF22-43C8-A80B-3C937E99395E}.Debug|Win32.Build.0 = Debug|Win32
+		{71E8624B-CF22-43C8-A80B-3C937E99395E}.Release|Win32.ActiveCfg = Release|Win32
+		{71E8624B-CF22-43C8-A80B-3C937E99395E}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
