@@ -182,7 +182,7 @@ public :
 			20, 22, 23
 		};
 		m_IndexCount = ARRAYSIZE(cubeIndices);
-
+		int t = sizeof(cubeVertices);
 		CD3D11_BUFFER_DESC verticesBufferDesc (sizeof(cubeVertices), D3D11_BIND_VERTEX_BUFFER);
 		D3D11_SUBRESOURCE_DATA vertexSubResData;
 		vertexSubResData.pSysMem     = cubeVertices;

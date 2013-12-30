@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{71E8624B-CF22-43C8-A80B-3C937E99395E}</ProjectGuid>
+    <ProjectGuid>{B15D70B9-90A8-4DE0-A071-08409F6A31FD}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>xedi_on_directx11</RootNamespace>
-    <ProjectName>xedi_on_directx11___2___from___N</ProjectName>
+    <ProjectName>xedi_on_directx11___3___from___N</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -94,10 +94,10 @@
     <ClCompile Include="vertextypes.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <FxCompile Include="..\data\shaders\Simple_PS_02.hlsl">
+    <FxCompile Include="..\data\shaders\Simple_PS_03.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
     </FxCompile>
-    <FxCompile Include="..\data\shaders\Simple_VS_02.hlsl">
+    <FxCompile Include="..\data\shaders\Simple_VS_03.hlsl">
       <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
     </FxCompile>
   </ItemGroup>
